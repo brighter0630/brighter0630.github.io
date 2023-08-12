@@ -21,10 +21,10 @@ author: JH Lee
 
 navbar-links:
   About Me: "JH Lee"
-  Resources:
-    - Soccer Statistics: "https://brighter0630.github.io/"
+#  Resources:
+#    - Soccer Statistics: "https://brighter0630.github.io/"
 #    - Learn markdown: "https://www.markdowntutorial.com/"
-  Author's home: "https://brighter0630.github.io/"
+#  Author's home: "https://brighter0630.github.io/"
   
 ################
 # --- Logo --- #

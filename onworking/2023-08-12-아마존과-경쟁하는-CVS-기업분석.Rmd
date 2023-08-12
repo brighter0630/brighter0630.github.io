@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "아마존과 경쟁하는 CVS 기업분석"
-subtitle: "CVS의 주가가 계속해서 하락하고 있다. 지금 이 순간, CVS에 투자할 기회인가?"
+title: 아마존과 경쟁하는 CVS 기업분석
+subtitle: CVS의 주가가 계속해서 하락하고 있다. 지금 이 순간, CVS에 투자할 기회인가?
 gh-repo: daattali/beautiful-jekyll
 gh-badge: [star, fork, follow]
 date:   2023-08-12 19:21:25
 tags: [CVS 미국주식 기업분석]
 comments: true
 ---
+>이 포스팅에서는 CVS라는 기업의 최근 10년 실적과 현재의 위기 상황, 그리고 미래에 대해 알아본다. 기업의 미래에 대해 정확하게 예측할 수는 없지만 대략적으로는 추정할 수 있다. 특히 시장이 최악의 상황을 예상하는 가운데 싸게 매수하여 상황이 호전되었을 때 매도하면 큰 차익을 거둘 수 있는데 CVS가 그런 기업에 해당하는 지 함께 살펴보자.
+
 <!-- layout: post -->
 <!-- title: Sample blog post to learn markdown tips -->
 <!-- subtitle: There's lots to learn! -->
