@@ -1,5 +1,5 @@
 User-agent: Googlebot
-User-agent: NaverBot
+User-agent: Yeti
 Allow: /
 
-Sitemap: http://dymaxionkim.github.io/beautiful-jekyll/sitemap.xml
+Sitemap: https://brighter0630.github.io/sitemap.xml
