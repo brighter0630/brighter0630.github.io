@@ -5,7 +5,7 @@ subtitle: Always go with your passions. Never ask yourself if it's realistic or 
 ---
 
 ### My history
-1987년 탄생
+1987년 탄생  
 2006년 2월 고등학교 졸업  
 2006년 3월 의과대학 입학  
 2012년 2월의과대학 졸업, 의사국가고시 합격  
