@@ -8,6 +8,6 @@ paste0(base.dir, fig.path)
 opts_knit$set(base.dir = base.dir, base.url = base.url)
 opts_chunk$set(fig.path = fig.path) 
 setwd('C:\\brighter0630.github.io\\_posts\\')
-knit(paste0(filename, '.Rmd'), output = paste0(filename, '.md'))
+
 library(rmarkdown)
 render(paste0(filename, '.Rmd'), md_document(variant = "gfm"), output_yaml = TRUE)
