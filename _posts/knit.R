@@ -11,3 +11,4 @@ setwd('C:\\brighter0630.github.io\\_posts\\')
 
 library(rmarkdown)
 render(paste0(filename, '.Rmd'), md_document(variant = "gfm"), output_yaml = TRUE)
+knit(md_document())
