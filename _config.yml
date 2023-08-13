@@ -13,13 +13,13 @@
 title: 통계로 보는 유럽축구 분석
 
 # Your name to show in the footer
-author: JH Lee
+author: Junghoon Lee
 ###############################################
 # --- List of links in the navigation bar --- #
 ###############################################
 
 navbar-links:
-  About Me: "JH Lee"
+  About Me: "aboutme"
 #  Resources:
 #    - Soccer Statistics: "https://brighter0630.github.io/"
 #    - Learn markdown: "https://www.markdowntutorial.com/"
