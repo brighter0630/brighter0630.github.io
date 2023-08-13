@@ -2,8 +2,7 @@
 layout: post
 title: "아마존과 경쟁하는 CVS 기업분석"
 subtitle: "CVS의 주가가 계속해서 하락하고 있다. 지금 이 순간, CVS에 투자할 기회인가?"
-gh-repo: daattali/beautiful-jekyll
-# gh-badge: [star, fork, follow]
+author: Behind Numbers
 tags: [CVS, 미국주식, 기업분석]
 comments: true
 ---

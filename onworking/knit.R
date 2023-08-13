@@ -1,5 +1,5 @@
 library(knitr)
-filename <- "2023-08-13-토트넘-해리케인과-손흥민의-비교분석"
+filename <- "2023-08-12-아마존과-경쟁하는-CVS-기업분석"
 
 base.dir <- paste0("C:\\brighter0630.github.io\\")
 base.url <- "../"
