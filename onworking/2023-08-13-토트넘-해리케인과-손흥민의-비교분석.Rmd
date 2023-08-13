@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 토트넘-해리케인과-손흥민의-비교분석
+title: 토트넘 해리 케인과 손흥민의 비교분석
 subtitle: 해리 케인의 이적이 확정됐다. 손흥민이 그 자리를 메꿀 수 있을까?
 author: Behind Numbers
 date: "`r Sys.Date()`"
