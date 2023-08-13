@@ -1,0 +1,158 @@
+---
+layout: post
+title: 토트넘-해리케인과-손흥민의-비교분석
+subtitle: 해리 케인의 이적이 확정됐다. 손흥민이 그 자리를 메꿀 수 있을까?
+author: Behind Numbers
+date: "`r Sys.Date()`"
+tags: [손흥민, 해리케인, 토트넘]
+comments: true
+---
+
+>해리 케인의 이적으로 토트넘의 전력을 얼마나 악화될 것인가? 과연 손흥민 선수가 그 빈 자리를 채울 수 있을까? 해리 케인이 이적하면 토트넘의 득점력은 어떻게 달라질 것인가. 통계를 보며 생각해보자.
+
+```{r setup, include=FALSE, echo=FALSE, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(dplyr)
+library(ggrepel)
+library(ggforce)
+library(tidyr)
+
+
+data <- read.csv('../allplayers.csv')
+
+Tottenham <- data %>% filter(Squad == 'Tottenham')
+Tottenham$color = ifelse(Tottenham$Player == 'Son Heung-min', 1, 0)
+```
+
+# 손흥민과 해리 케인
+## 공통점
+
+```{r echo = F, warning=FALSE, message = F}
+ggplot(data = Tottenham, aes(x = MP_Playing, y = Cmp_Total)) +
+  geom_point(aes(size = KP/MP_Playing), alpha =.2) +
+  geom_text_repel(aes(label = Player), nudge_y = 20) +
+  scale_y_continuous(labels = scales::comma) +
+  theme_bw() +
+  labs(title = "Key Stats of Tottenham Players in 2022/2023 Season",
+       subtitle = "",
+       x = "Number of Matches Played", y = "Total Completed Passes",
+       size = "Key Pass/Match") +
+  theme(
+    panel.background = element_rect(fill = 'grey100'),
+    plot.title = element_text(size = 20),
+    axis.title = element_text(size = 14)
+  ) +
+  geom_mark_circle(aes(x = 36.5, y = 625, label = "Son & Kane"),
+                   radius = unit(15, "mm"), colour = 'blue', size = 1,
+                   label.fill = NA, con.colour = NA, label.colour = 'blue',
+                   label.buffer = unit(5, 'mm'))
+
+```
+
+&nbsp;손흥민 선수는 2021/2022 시즌만큼의 활약은 아니지만 지난 시즌에서도 준수한 성적을 기록했다. 같은 대한민국 국민으로써 자랑스럽기 그지없다. 위 차트를 보면 손흥민과 해리 케인은 약 36경기 정도를 소화하며 650개 정도의 패스를 기록했다. 특히 두 선수는 높은 경기당 1.6개의 ``Key Pass``를 기록했다. ``Key Pass``는 슛팅으로 이어진 패스다. 슛팅으로 이어진 모든 패스가 좋은 패스는 아니지만, 많은 데이터가 쌓일수록 더 큰 의미를 갖는다. 한 두번의 패스는 우연히 좋은 슛팅으로 연결되기도 *하지만 결국 슛팅으로 연결되기 위해서는 위험지역으로 슛팅하기 좋게 패스하는 게 중요하기 때문이다.*
+
+&nbsp;호이비에르는 무려 2천개가 넘는 패스를 2022/23 시즌 동안 기록했다. 공격에도 자주 가담하지만 기본적으로 포지션이 미드필더이기 때문에 ``Key Pass``의 빈도는 적다.
+* * *
+
+## 해리 케인과 손흥민의 차이점 
+### 경기당 Key Pass
+
+```{r echo = F}
+Tottenham %>% 
+  filter(Player %in% c("Son Heung-min", "Harry Kane")) %>%
+  ggplot(data = ., aes(x = Player, y = KP/MP_Playing, fill=Player)) +
+  geom_col(alpha = .8) +
+  scale_y_continuous(limits = c(0, 2)) +
+  labs(
+    title = "Comparison between Kane And Son",
+    x = element_blank(),
+    y = "Key Passes per Match"
+  ) +
+  theme_bw() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 20),
+    axis.title = element_text(size = 14),
+    axis.text.x = element_text(size = 12)
+  )
+```
+&nbsp;앞서 이야기했다시피 Key Pass의 경우 두 선수 모두 훌륭하다. 굳이 비교하자면 손흥민이 다소 높은 편이다. 경기를 보면 쉽게 알 수 있다. 손흥민은 케인보다 양질의 크로스를 올린다. 그리고 기본적인 활동 반경이 해리 케인이 조금 더 넓다. 손흥민은 주로 페널티 박스 근처나 페널티 박스 안에 머무르기 때문에 확률적으로 ``Key Pass``를 할 가능성이 높은 것이다.
+
+* * *
+### Final Third로의 패스
+
+```{r echo = F}
+
+Tottenham %>% 
+  filter(Player %in% c("Son Heung-min", "Harry Kane")) %>%
+  select( Final_Third, Player) %>%
+  ggplot(data = ., aes ( x = Player, y = Final_Third, fill = Player)) +
+  geom_col(alpha = .8) +
+  labs(
+    title = "Comparison between Kane And Son",
+    x = element_blank(),
+    y = "Passes in Final Thrid"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 20),
+    axis.title = element_text(size = 14),
+    axis.text.x = element_text(size = 12)
+  )
+```
+
+&nbsp;단순히 Key Pass를 비교하지 않고 전반적인 패스가 얼마나 공격적이었는가를 비교하면 이야기가 다르다. 위 표는 `Final Third`로 *성공적으로 연결된 패스*의 숫자다. 여기서 꽤 큰 차이가 난다. 이 부분은 사실 해리 케인이 압도적으로 우세하다. 손흥민이 주로 전방에 머물러 있었기 때문에 `Final Third`로 패스할 기회가 적었다는 걸 감안하더라도 차이가 너무 크다. 어쩌면 해리 케인은 기존 자원으로는 대체할 수 없는 선수인지도 모른다.
+* * *
+### Final Third로의 Carry
+
+```{r echo = F}
+Tottenham %>% 
+  filter(Player %in% c("Son Heung-min", "Harry Kane")) %>%
+  select( Final_Third_Carries, Player) %>%
+  ggplot(data = ., aes ( x = Player, y = Final_Third_Carries, fill = Player)) +
+  geom_col(alpha = .8) +
+  labs(
+    title = "Comparison between Kane And Son",
+    x = element_blank(),
+    y = "Final Third Carries"
+  ) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 20),
+    axis.title = element_text(size = 14),
+    axis.text.x = element_text(size = 12)
+  )
+```
+
+&nbsp;*Carry란 패스가 아닌, 드리블로 볼을 직접 운반하는 것을 말한다.* 경기장의 상대방 1/3 지점으로 볼을 직접 *성공적으로* 드리블한 횟수를 말한다. 손흥민은 빠른 발을 바탕으로 경기장 중앙부터 빠르게 앞으로 드리블 해 나가는 걸 볼 수 있다. 해리 케인도 마찬가지다. 좋은 피지컬을 바탕으로 볼을 빼앗기지 않고 전진시킨다. 큰 차이는 아니지만 손흥민이 이 부분에 있어서 다소 우세하다. 하지만 큰 차이가 아닌 것에 주목하자. 2022/23 시즌 동안의 수치로써 프리미어리그가 38경기인 것을 감안하면 경기당 0.25회의 차이에 불과하다.
+* * *
+## 두 선수의 가장 결정적인 차이는?
+
+```{r echo = F}
+Tottenham %>% 
+  select( npxG.xAG_Expected, Player, color) %>% arrange(desc(npxG.xAG_Expected)) %>% head(10) %>%
+  ggplot(data = ., aes (x = reorder(Player, -npxG.xAG_Expected), y = npxG.xAG_Expected, fill = color)) +
+  geom_col() +
+  labs(
+    title = "Expected Goals and Assists Excluding Penalty Kicks",
+    x = element_blank(),
+    y = "Expected Goals and Assists"
+  ) +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 20),
+    axis.title = element_text(size = 14),
+    axis.text.x = element_text(size = 12)
+  )
+```
+
+&nbsp;이제는 축구에서도 통계적인 분석이 주의를 끌고 있다. *그 중 가장 중요한 지표가 xG 이다.* xG 는 expected Goals의 약자다. ``만약 정확히 같은 위치와 상황에서 100번의 슛을 했을 때 슛을 성공시킬 확률이 얼마인지를 나타내는 지표다.`` 이 지표는 볼과 골대와의 거리, 가장 가까운 상대 선수와 볼과의 거리, 골대와 볼 사이에 위치한 선수의 수, 오른발, 왼발, 헤딩, 발리슛팅 외에도 여러가지 요소를 감안해서 분석한 수치다.
+
+&nbsp;여기에 더해 위의 통계는 expected Assists 까지 더한 수치인데 두 선수는 바로 이 지점에서 차이가 두드러진다. 해리 케인은 거의 23개에 가까운 득점을 창출해냈고 손흥민은 16개 수준이다. 50% 차이다. 손흥민도 물론 대단하다. 해리 케인이 이적하면 이제 토트넘의 득점력은 손흥민 혼자 캐리해야 할 지도 모른다. 하지만 어떡하나? 손흥민의 골 중 상당수는 해리 케인의 어시스트가 아니었던가?
+* * *
+## 결론
+
+&nbsp;해리 케인의 이적이 확정된 가운데 손흥민이 토트넘의 주장이 되었다는 뉴스다. 안그래도 부담스러운 상황에서 주장 완장에 대한 부담이 손흥민의 득점력에 악영향을 미치지 않을까 걱정된다. 토트넘은 해리 케인의 이적 가능성이 높아지며 상황이 더 급박해졌다. 과거 해리 케인이 결장한 경기들을 돌이켜 보면 굉장히 실망스러운 퍼포먼스였다. 그 이유는 위에서 살펴봤듯, 해리 케인이 토트넘에서 맡고 있던 역할 때문이다. 수많은 전진패스와 key pass 그리고 final third로의 캐리가 해리 케인으로부터 창출됐고 케인은 많은 어시스트와 골을 기록했다.
+
+&nbsp;과연 해리 케인이 없는 토트넘은 이번 시즌 좋은 성적을 거둘 수 있을까?
