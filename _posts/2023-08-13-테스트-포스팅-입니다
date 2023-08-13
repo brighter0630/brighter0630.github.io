@@ -1,0 +1,13 @@
+---
+
+layout: post
+
+title: 안뇽
+
+---
+
+
+
+이미지 넣기 테스트
+
+![Rplot]({{site.url}}/figures/2023-08-13-테스트-포스팅-입니다/Rplot.png)
