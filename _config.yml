@@ -161,13 +161,13 @@ footer-hover-col: "#0085A1"
 #################################
 
 # Fill in your Google Analytics tag ID (or "Measurement ID") to track your website usage
-# gtag: "G-NMZLX6GJ93"
+ gtag: "G-NMZLX6GJ93"
 
 # Fill in your Cloudflare Analytics beacon token to track your website using Cloudflare Analytics
 #cloudflare_analytics: ""
 
 # Google Tag Manager ID
-gtm: "G-NMZLX6GJ93"
+gtm: "GT-55JPDT3"
 
 # Matomo (aka Piwik) Web statistics
 # Uncomment the following section to enable Matomo. The opt-out parameter controls
@@ -180,7 +180,7 @@ gtm: "G-NMZLX6GJ93"
 # Google Universal Analytics ID -- deprecated
 # As of July 2023 this is no longer supported by Google! If you are still using `google_analytics`,
 # you should switch to using the `gtag` field above instead.
-# google_analytics: "G-NMZLX6GJ93"
+#  google_analytics: "G-NMZLX6GJ93"
 
 ####################
 # --- Comments --- #
